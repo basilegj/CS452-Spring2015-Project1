@@ -1,3 +1,21 @@
-name, date, description
+Greg Basile, April 1, 2015
 
-be sure to include complete details of how to interact with your game, the scoring system, and how to win
+So the game is called catch the ball.
+
+Basically the goal of the game is to make the multicolored square
+collide with the objects that fly across the screen.
+At the moment there is only one object that moves along the screen. So for difficulty,
+the user most catch the ball before it hits the other side. To make things
+even more difficult, there is a difficulty associated with your score. The speed of the 
+object increases by 10% every 5 points. However, the render rate plays a larger role in 
+the speed of the object than I would like. 
+
+There are also buttons to let you start, pause, and stop the game. The only real difference
+being that stop resets your score and draws another object. 
+
+The game also keeps track of your high score. So there is no winning, just get the highest score
+you can. 
+
+It moves the objects using a translate function and model view matrices. 
+
+

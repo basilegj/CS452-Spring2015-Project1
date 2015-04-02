@@ -1,31 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-<script id="vertex-shader" type="x-shader/x-vertex">
-attribute vec4 vPosition;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-void main()
-{
-  gl_Position = vPosition;
-}
+<title>Greg's Game</title>
+<h1>Catch the Ball</h1>
+<p>
+The goal of this game is to collide with the particle as many times as you can before it reaches the edge.
+ </p>
+<p></p>
+<text>Score = </text>
+<text id = "score" >0</text>
+<text>&nbsp &nbsp High Score = </text>
+<text id = "High">0</text>
+
+<p></p>
+<script id="vertex-shader" type="x-shader/x-vertex">
+    attribute vec4 vPosition;
+    attribute vec4 vColor;
+    varying vec4 fColor;
+    uniform mat4 uModelViewMatrix;
+
+    void main()
+    {
+		gl_PointSize = 10.0;
+        gl_Position = uModelViewMatrix*vPosition;
+        fColor = vColor;
+    } 
 </script>
 
 <script id="fragment-shader" type="x-shader/x-fragment">
-precision mediump float;
+precision mediump float;/**/
+varying vec4 fColor; /**/
 
 void main()
 {
-gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 );
+     gl_FragColor = fColor; /**/
 }
 </script>
-<script type="text/javascript" src="../Common/webgl-utils.js"></script>
-<script type="text/javascript" src="../Common/initShaders.js"></script>
-<script type="text/javascript" src="../Common/MV.js"></script>
-<script type="text/javascript" src="project1.js"></script>
-</head>
+
+<script type="text/javascript" src="Common/webgl-utils.js"></script>
+<script type="text/javascript" src="Common/initShaders.js"></script>
+<script type="text/javascript" src="Common/MV.js"></script>
+<script type="text/javascript" src="Project1.js"></script>
+
 <body>
-<canvas id="gl-canvas" width="512" height="512">
-Oops ... your browser doesn't support the HTML5 canvas element
+<div>
+<canvas id="gl-canvas" width="512" height="512" >
+    Oops ... your browser doesn't support the HTML5 canvas element
 </canvas>
+</div>
+<button id = "button1" type="push" >Start</button>
+<button id = "button2" type="push">Pause</button>
+<button id = "button3" type="push">Stop</button>
+
 </body>
+
 </html>
